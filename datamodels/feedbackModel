@@ -1,0 +1,102 @@
+const mongoose = require("mongoose");
+
+// Importing the User model
+const User = require("./userModel");
+
+const feedbackSchema = new mongoose.Schema(
+  {
+    // Reference to the User model
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
+
+    // Extracting relevant fields from the User schema
+
+    // name: {
+    //   type: String,
+    //   required: true,
+    // },
+    // email: {
+    //   type: String,
+    //   required: true,
+    // },
+    // department: {
+    //   type: String,
+    //   required: true,
+    // },
+    // batch: {
+    //   type: Number,
+    //   required: true,
+    // },
+    // rollNumber: {
+    //   type: String,
+    //   required: true,
+    // },
+
+    // Other feedback fields
+
+    companyName: {
+      type: String,
+      required: true,
+    },
+    year: {
+      type: Number,
+      required: true,
+    },
+    month: {
+      type: String,
+      required: true,
+    },
+    numberOfRounds: {
+      type: Number,
+      required: true,
+    },
+    jobTitle: {
+      type: String,
+      required: true,
+    },
+    jobDescription: {
+      type: String,
+      required: true,
+    },
+    package: {
+      type: String,
+      required: true,
+    },
+    extendedForm: {
+      type: Boolean,
+      default: false,
+    },
+    rounds: [
+      {
+        roundNumber: {
+          type: Number,
+          required: true,
+        },
+        roundTitle: {
+          type: String,
+          required: true,
+        },
+        experience: {
+          type: String,
+          required: true,
+        },
+        files: [String], // Array of file URLs
+      },
+    ],
+    photo: {
+      type: String, // Assuming you'll store a URL to the photo
+    },
+    createdAt: {
+      type: Date,
+      default: Date.now,
+    },
+  },
+  { collection: "feedbackdetails" }
+);
+
+const Feedback = mongoose.model("Feedback", feedbackSchema);
+
+module.exports = Feedback;
