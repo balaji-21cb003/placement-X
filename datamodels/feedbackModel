@@ -12,31 +12,7 @@ const feedbackSchema = new mongoose.Schema(
       required: true,
     },
 
-    // Extracting relevant fields from the User schema
-
-    // name: {
-    //   type: String,
-    //   required: true,
-    // },
-    // email: {
-    //   type: String,
-    //   required: true,
-    // },
-    // department: {
-    //   type: String,
-    //   required: true,
-    // },
-    // batch: {
-    //   type: Number,
-    //   required: true,
-    // },
-    // rollNumber: {
-    //   type: String,
-    //   required: true,
-    // },
-
     // Other feedback fields
-
     companyName: {
       type: String,
       required: true,
@@ -89,12 +65,11 @@ const feedbackSchema = new mongoose.Schema(
     photo: {
       type: String, // Assuming you'll store a URL to the photo
     },
-    createdAt: {
-      type: Date,
-      default: Date.now,
-    },
   },
-  { collection: "feedbackdetails" }
+  {
+    timestamps: true, // Include timestamps option here
+    collection: "feedbackdetails",
+  }
 );
 
 const Feedback = mongoose.model("Feedback", feedbackSchema);

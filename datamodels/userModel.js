@@ -46,7 +46,10 @@ const userSchema = new mongoose.Schema(
       default: Date.now,
     },
   },
-  { collection: "userdetails" }
+  {
+    timestamps: true, // Include timestamps option here
+    collection: "userdetails",
+  }
 ); // Specify the collection name here
 
 const User = mongoose.model("User", userSchema);
